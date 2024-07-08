@@ -1,0 +1,27 @@
+const AWS = require('aws-sdk');
+const S3 = new AWS.S3();
+const DynamoDB = new AWS.DynamoDB.DocumentClient();
+const { nanoid } = require('nanoid');
+
+exports.handler = async (event) => {
+  const { inputText, inputFile } = JSON.parse(event.body);
+  const filePath = `s3://${process.env.BUCKET_NAME}/${inputFile}`;
+  const id = nanoid();
+
+  // Insert into DynamoDB
+  await DynamoDB.put({
+    TableName: process.env.TABLE_NAME,
+    Item: {
+      id,
+      input_text: inputText,
+      input_file_path: filePath,
+    },
+  }).promise();
+
+  // Further processing steps
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: 'Data processed successfully' }),
+  };
+};

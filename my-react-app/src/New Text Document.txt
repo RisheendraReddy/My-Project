@@ -1,0 +1,14 @@
+const awsconfig = {
+  Auth: {
+    identityPoolId: 'YOUR_IDENTITY_POOL_ID', // REQUIRED - Amazon Cognito Identity Pool ID
+    region: 'us-east-1', // REQUIRED - Amazon Cognito Region
+  },
+  Storage: {
+    AWSS3: {
+      bucket: 'uploadfilejson', // REQUIRED -  Amazon S3 bucket name
+      region: 'us-east-1', // REQUIRED -  Amazon service region
+    },
+  },
+};
+
+export default awsconfig;
