@@ -1,4 +1,4 @@
-# Welcome to your CDK TypeScript project
+# Welcome to my Automated File Processing and Data Management System
 
 This is a blank project for CDK development with TypeScript.
 
